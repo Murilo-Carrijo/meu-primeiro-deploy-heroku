@@ -1,0 +1,20 @@
+on: [push, pull_request]
+
+jobs:
+  eslint:
+    runs-on: ubunto-latest
+    steps:
+      - name: verifica o repositório do Git
+      uses: actions/checkout@v2
+
+      - name: Intala o node com a versão
+      uses: actions/steup-node@v1
+      with:
+        node-version: 14
+      
+
+      - name: instalando as dependências
+        run: npm install
+
+      - name: executando o lint para verificar se a erros
+        run: npx eslint .
